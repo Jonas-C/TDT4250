@@ -46,7 +46,8 @@ public class ConversionServlet extends HttpServlet implements Servlet {
 		String path = request.getPathInfo();
 		if(path != null) segments.addAll(Arrays.asList(path.split("\\/")));
 		if(segments.size() == 0) {
-			response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE, "Not found");
+			PrintWriter writer = response.getWriter();
+			writer.print("Hey! Add a conversion to the end of the URL to convert something!\nInfo about usage can be found on GitHub :)\nExample usage: http://localhost:8080/conversion/celtofah?q=30");
 			return;
 		}
 		if(segments.size() > 0 && segments.get(0).length() == 0) segments.remove(0);
