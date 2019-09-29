@@ -9,7 +9,7 @@ its specializations, Software and Artificial Intelligence.
 
 As for the custom code, all of it can currently be found in src/programme/util/ProgrammeValidator. The following methods contain custom code:
 
-validateStudyYear_mustContainFallAndSpringSemesters
+validateStudyYear_mustCOntainFallAndSpringSemesters
 
 helper_validateSemester_semesterTypesMustMatch
 

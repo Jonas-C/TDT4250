@@ -1,0 +1,13 @@
+Bundle-Version: 1.0.0.${tstamp}
+
+-baseline: *
+-buildpath: \
+	osgi.annotation;version=7.0.0,\
+	osgi.core,\
+	tdt4250.conversion.api;version=latest,\
+	osgi.cmpn,\
+	org.osgi.service.cm,\
+	org.osgi.core
+
+javac.source: 1.8
+javac.target: 1.8
