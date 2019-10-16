@@ -1,0 +1,158 @@
+[comment encoding = UTF-8 /]
+[module HTMLGenerator('http://www.eclipse.org/emf/2002/Ecore', 'platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore')]
+
+
+[template public generateHTML(dept : Department)]
+	[comment @main/]
+	[file (dept.name.concat('.html'), false, 'UTF-8')]
+
+<html>
+<head>
+<title>[dept.name/]</title>
+<style>
+
+	table, tr, td, th {
+		padding: 15px;
+	}
+
+	table, tr {
+		border-collapse: collapse;
+		border: 1px solid black;
+	}
+
+	td {
+		background-color: #E8E8E8;
+	}
+
+	table {
+		margin-bottom: 50px;
+	}
+
+	.content {
+		margin: auto;
+		width : 50%;
+	}
+	
+	.semesterType {
+		display: flex;
+	}
+	.semesterType p {
+		padding-right: 30px;
+	}
+
+	body {
+		font-family: Arial;
+	}
+</style>
+</head>
+<body>
+<script>
+	function generateCourses(courses){
+		
+	}
+</script>
+	<h1 style="text-align: center; padding: 50px;"> Programmes belonging to Department [dept.name/]</h1>
+	<div class="content">
+		[for (programme:Programme | dept.programmes)]
+			[generateProgramme(programme)/]
+		[/for]
+	</div>
+
+</body>
+</html>
+
+[/file]
+[/template]
+
+[template public generateProgramme(programme : Programme)]
+	
+	<h2>[programme.name/] [programme.code/]</h2>
+	[for (year:StudyYear| programme.studyYears)]
+		<p>[year/]</p>
+	[/for]
+	[for (specialization : Specialization | programme.availableSpecializations)]
+		
+		[generateSpecialization(specialization)/]
+	[/for]
+
+[/template]
+
+[template public generateSpecialization(specialization : Specialization)]
+	
+	<h3>Specialization: [specialization.name/]<h3>
+	[for (year : StudyYear | specialization.studyYears)]
+		[generateYear(year)/]
+	[/for]
+	
+
+[/template]
+
+[template public generateYear(year : StudyYear)]
+	<h4>Year [year.year/]</h4>
+	[for (semester : Semester | year.semesters)]
+		[generateSemester(semester)/]
+	[/for]
+[/template]
+
+[template public generateSemester(semester : Semester)]
+	
+	<div class="semesterType">
+		<p style="color: #888" >[semester.semesterType/]</p>
+		<p><b>Obligatory</b></p>
+	</div>
+		<table>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Credits</th>
+			</tr>
+		[for (obligatoryCourse : Course | semester.mandatoryCourses)]
+			[generateCourse(obligatoryCourse)/]
+		[/for]
+		</table>
+
+
+		<p><b>M2A Courses</b></p>
+		<table>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Credits</th>
+			</tr>
+		[for (m2aCourse : Course | semester.m2aCourses)]
+			[generateCourse(m2aCourse)/]
+		[/for]
+		</table>
+		
+		<p><b>M1A Courses</b></p>
+		<table>
+				<tr>
+					<th>Code</th>
+					<th>Name</th>
+					<th>Credits</th>
+				</tr>
+			[for (m1aCourse : Course | semester.m1aCourses)]
+				[generateCourse(m1aCourse)/]
+			[/for]
+		</table>
+
+		<p><b>Electives</b></p>
+		<table>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Credits</th>
+			</tr>
+		[for (elective : Course | semester.electives)]
+			[generateCourse(elective)/]
+		[/for]
+	</table>
+[/template]
+
+[template public generateCourse(course: Course)]
+	<tr>	
+		<td>[course.code/]</td>
+		<td>[course.name/]</td>
+		<td>[course.credits/]</td>
+	</tr>
+[/template]
