@@ -26,10 +26,13 @@ Since the transformation uses Acceleo, this has to be installed first. While in 
 After this has been done, right click the HTMLGenerator.mtl file described above, then hover over "Run As" and then select "Launch Acceleo Project".
 If this doesn't work you're gonna have to alter the run configuration. This can be done by right clicking HTMLGenerator.mtl,
 hover "Run As" and then selecting "Run Configurations..". The following configuration should work:
-**Project:** tdt4250.m2t.
-**Main Class:** tdt4250.m2t.main.HTMLGenerator.
+**Project:** tdt4250.m2t
+**Main Class:** tdt4250.m2t.main.HTMLGenerator
 **Model:** /org.eclipse.NTNU.studymodel/model/Department.xmi
 **Target:** /tdt4250.m2t/test
+
+After this has been added, click apply and then you should be good to go. Run the file as described above.
+The output should be in the "test"-folder in tdt4250.m2t.
 
 ## Something to note
 
