@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<org.eclipse.NTNU.studymodel:Department
+<programme:Department
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:org.eclipse.NTNU.studymodel="http://org.eclipse.NTNU.studymodel"
-    xsi:schemaLocation="http://org.eclipse.NTNU.studymodel ProgrammeNext.ecore"
-    name="of Computer science">
+    xmlns:programme="http://platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore"
+    xsi:schemaLocation="http://platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore ProgrammeNext.ecore"
+    name="Computer science">
   <programmes
       name="Master of Science in informatics"
       programmeType="MASTER_2_YEARS"
@@ -14,44 +14,109 @@
         name="Software">
       <studyYears
           year="1">
+        <semesters>
+          <courses
+              semesterCourse="//@courses.0"/>
+          <courses
+              semesterCourse="//@courses.1"
+              courseType="M2A"/>
+          <courses
+              semesterCourse="//@courses.2"
+              courseType="M2A"/>
+          <courses
+              semesterCourse="//@courses.3"
+              courseType="M2A"/>
+          <courses
+              semesterCourse="//@courses.4"
+              courseType="Elective"/>
+          <courses
+              semesterCourse="//@courses.5"
+              courseType="M1A"/>
+        </semesters>
         <semesters
-            electives="//@courses.4 //@courses.5"
-            mandatoryCourses="//@courses.0"
-            m2aCourses="//@courses.1 //@courses.2 //@courses.3"/>
-        <semesters
-            semesterType="SPRING"
-            mandatoryCourses="//@courses.7 //@courses.8 //@courses.20"
-            m2aCourses="//@courses.6 //@courses.9 //@courses.10"/>
+            semesterType="SPRING">
+          <courses
+              semesterCourse="//@courses.6"
+              courseType="M2A"/>
+          <courses
+              semesterCourse="//@courses.7"/>
+          <courses
+              semesterCourse="//@courses.8"/>
+          <courses
+              semesterCourse="//@courses.9"
+              courseType="M2A"/>
+          <courses
+              semesterCourse="//@courses.10"
+              courseType="M2A"/>
+          <courses
+              semesterCourse="//@courses.20"/>
+        </semesters>
       </studyYears>
       <studyYears
           year="2">
+        <semesters>
+          <courses
+              semesterCourse="//@courses.11"/>
+        </semesters>
         <semesters
-            mandatoryCourses="//@courses.11"/>
-        <semesters
-            mandatoryCourses="//@courses.12"/>
+            semesterType="SPRING">
+          <courses
+              semesterCourse="//@courses.12"/>
+        </semesters>
       </studyYears>
     </availableSpecializations>
     <availableSpecializations
         name="Artificial Intelligence">
       <studyYears
           year="1">
+        <semesters>
+          <courses
+              semesterCourse="//@courses.5"/>
+          <courses
+              semesterCourse="//@courses.13"/>
+          <courses
+              semesterCourse="//@courses.14"/>
+          <courses
+              semesterCourse="//@courses.4"
+              courseType="Elective"/>
+          <courses
+              semesterCourse="//@courses.15"
+              courseType="Elective"/>
+          <courses
+              semesterCourse="//@courses.3"
+              courseType="Elective"/>
+          <courses
+              semesterCourse="//@courses.16"
+              courseType="Elective"/>
+        </semesters>
         <semesters
-            electives="//@courses.3 //@courses.4 //@courses.15 //@courses.16"
-            mandatoryCourses="//@courses.5 //@courses.13"
-            m1aCourses="//@courses.14"/>
-        <semesters
-            semesterType="SPRING"
-            electives="//@courses.21"
-            mandatoryCourses="//@courses.7 //@courses.17 //@courses.20"
-            m1aCourses="//@courses.18 //@courses.19"/>
+            semesterType="SPRING">
+          <courses
+              semesterCourse="//@courses.7"/>
+          <courses
+              semesterCourse="//@courses.17"/>
+          <courses
+              semesterCourse="//@courses.18"
+              courseType="M1A"/>
+          <courses
+              semesterCourse="//@courses.19"
+              courseType="M1A"/>
+          <courses
+              semesterCourse="//@courses.21"
+              courseType="Elective"/>
+        </semesters>
       </studyYears>
       <studyYears
           year="2">
+        <semesters>
+          <courses
+              semesterCourse="//@courses.22"/>
+        </semesters>
         <semesters
-            mandatoryCourses="//@courses.22"/>
-        <semesters
-            semesterType="SPRING"
-            mandatoryCourses="//@courses.23"/>
+            semesterType="SPRING">
+          <courses
+              semesterCourse="//@courses.23"/>
+        </semesters>
       </studyYears>
     </availableSpecializations>
   </programmes>
@@ -147,4 +212,4 @@
       code="IT3903"
       taugtIn="SPRING"
       credits="30.0"/>
-</org.eclipse.NTNU.studymodel:Department>
+</programme:Department>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="programme" nsURI="platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="programme" nsURI="http://platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore"
     nsPrefix="programme">
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="validationDelegates" value="http://www.eclipse.org/acceleo/query/1.0"/>
@@ -58,14 +58,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semesterType" lowerBound="1"
         eType="#//SemesterType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="electives" upperBound="-1"
-        eType="#//Course"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mandatoryCourses" upperBound="-1"
-        eType="#//Course"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="m2aCourses" upperBound="-1"
-        eType="#//Course"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="m1aCourses" upperBound="-1"
-        eType="#//Course"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="courses" lowerBound="1"
+        upperBound="-1" eType="#//SemesterCourse" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SemesterType">
     <eLiterals name="FALL"/>
@@ -81,5 +75,17 @@
     <eLiterals name="HIGHER"/>
     <eLiterals name="PHD" value="1"/>
     <eLiterals name="THIRD_YEAR"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SemesterCourse">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semesterCourse" lowerBound="1"
+        eType="#//Course"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="courseType" lowerBound="1"
+        eType="#//CourseType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CourseType">
+    <eLiterals name="Obligatory"/>
+    <eLiterals name="Elective" value="1"/>
+    <eLiterals name="M2A" value="2"/>
+    <eLiterals name="M1A" value="3"/>
   </eClassifiers>
 </ecore:EPackage>

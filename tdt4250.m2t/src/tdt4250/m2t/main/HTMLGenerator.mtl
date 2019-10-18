@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module HTMLGenerator('http://www.eclipse.org/emf/2002/Ecore', 'platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore')]
+[module HTMLGenerator('http://www.eclipse.org/emf/2002/Ecore', 'http://platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore')]
 
 
 [template public generateHTML(dept : Department)]
@@ -47,8 +47,10 @@
 </head>
 <body>
 <script>
-	function generateCourses(courses){
-		
+	function listCourses(courses){
+		for(course in courses){
+			console.log(course)
+		}
 	}
 </script>
 	<h1 style="text-align: center; padding: 50px;"> Programmes belonging to Department [dept.name/]</h1>
@@ -98,61 +100,27 @@
 	
 	<div class="semesterType">
 		<p style="color: #888" >[semester.semesterType/]</p>
-		<p><b>Obligatory</b></p>
 	</div>
-		<table>
-			<tr>
-				<th>Code</th>
-				<th>Name</th>
-				<th>Credits</th>
-			</tr>
-		[for (obligatoryCourse : Course | semester.mandatoryCourses)]
-			[generateCourse(obligatoryCourse)/]
-		[/for]
-		</table>
-
-
-		<p><b>M2A Courses</b></p>
-		<table>
-			<tr>
-				<th>Code</th>
-				<th>Name</th>
-				<th>Credits</th>
-			</tr>
-		[for (m2aCourse : Course | semester.m2aCourses)]
-			[generateCourse(m2aCourse)/]
-		[/for]
-		</table>
-		
-		<p><b>M1A Courses</b></p>
-		<table>
-				<tr>
-					<th>Code</th>
-					<th>Name</th>
-					<th>Credits</th>
-				</tr>
-			[for (m1aCourse : Course | semester.m1aCourses)]
-				[generateCourse(m1aCourse)/]
-			[/for]
-		</table>
-
-		<p><b>Electives</b></p>
-		<table>
-			<tr>
-				<th>Code</th>
-				<th>Name</th>
-				<th>Credits</th>
-			</tr>
-		[for (elective : Course | semester.electives)]
-			[generateCourse(elective)/]
-		[/for]
+	
+	<table>
+		<tr>
+			<th>Code</th>
+			<th>Name</th>
+			<th>Credits</th>
+			<th>Status</th>
+		</tr>
+	[for(semesterCourse : SemesterCourse | semester.courses)]
+		<tr>
+			[generateCourse(semesterCourse.semesterCourse)/]
+			<td>[semesterCourse.courseType/]</td>
+		</tr>
+	[/for]
 	</table>
+
 [/template]
 
 [template public generateCourse(course: Course)]
-	<tr>	
 		<td>[course.code/]</td>
 		<td>[course.name/]</td>
 		<td>[course.credits/]</td>
-	</tr>
 [/template]

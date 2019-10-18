@@ -40,7 +40,7 @@ public interface ProgrammePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore";
+	String eNS_URI = "http://platform:/plugin/org.eclipse.NTNU.studymodel/model/ProgrammeNext.ecore";
 
 	/**
 	 * The package namespace name.
