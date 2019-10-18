@@ -76,6 +76,15 @@ public interface ProgrammeFactory extends EFactory {
 	Semester createSemester();
 
 	/**
+	 * Returns a new object of class '<em>Semester Course</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Semester Course</em>'.
+	 * @generated
+	 */
+	SemesterCourse createSemesterCourse();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

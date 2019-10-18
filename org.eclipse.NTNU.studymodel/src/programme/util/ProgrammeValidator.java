@@ -99,12 +99,16 @@ public class ProgrammeValidator extends EObjectValidator {
 				return validateStudyYear((StudyYear)value, diagnostics, context);
 			case ProgrammePackage.SEMESTER:
 				return validateSemester((Semester)value, diagnostics, context);
+			case ProgrammePackage.SEMESTER_COURSE:
+				return validateSemesterCourse((SemesterCourse)value, diagnostics, context);
 			case ProgrammePackage.SEMESTER_TYPE:
 				return validateSemesterType((SemesterType)value, diagnostics, context);
 			case ProgrammePackage.PROGRAMME_TYPE:
 				return validateProgrammeType((ProgrammeType)value, diagnostics, context);
 			case ProgrammePackage.COURSE_LEVEL:
 				return validateCourseLevel((CourseLevel)value, diagnostics, context);
+			case ProgrammePackage.COURSE_TYPE:
+				return validateCourseType((CourseType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -262,9 +266,9 @@ public class ProgrammeValidator extends EObjectValidator {
 	 * @return boolean
 	 * @NOT generated
 	 */
-	private boolean helper_validateSemester_semesterTypesMustMatch(EList<Course> courses, SemesterType semesterType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		for(Course c : courses) {
-			if(c.getTaugtIn() != semesterType) return false;
+	private boolean helper_validateSemester_semesterTypesMustMatch(EList<SemesterCourse> courses, SemesterType semesterType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		for(SemesterCourse c : courses) {
+			if(c.getSemesterCourse().getTaugtIn() != semesterType) return false;
 		}
 		return true;
 		
@@ -277,13 +281,7 @@ public class ProgrammeValidator extends EObjectValidator {
 	 * @NOT generated
 	 */
 	public boolean validateSemester_semesterTypesMustMatch(Semester semester, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean semesterOK = true;
-		while(semesterOK == true) {
-			semesterOK = helper_validateSemester_semesterTypesMustMatch(semester.getElectives(), semester.getSemesterType(), diagnostics, context);
-			semesterOK = helper_validateSemester_semesterTypesMustMatch(semester.getM1aCourses(), semester.getSemesterType(), diagnostics, context);
-			semesterOK = helper_validateSemester_semesterTypesMustMatch(semester.getM2aCourses(), semester.getSemesterType(), diagnostics, context);
-			semesterOK = helper_validateSemester_semesterTypesMustMatch(semester.getMandatoryCourses(), semester.getSemesterType(), diagnostics, context);
-		}
+		boolean semesterOK = helper_validateSemester_semesterTypesMustMatch(semester.getCourses(), semester.getSemesterType(), diagnostics, context);
 		if (!semesterOK) {
 			if (diagnostics != null) {
 				diagnostics.add
@@ -300,6 +298,15 @@ public class ProgrammeValidator extends EObjectValidator {
 		}
 		return true;
 		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSemesterCourse(SemesterCourse semesterCourse, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(semesterCourse, diagnostics, context);
 	}
 
 	/**
@@ -326,6 +333,15 @@ public class ProgrammeValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCourseLevel(CourseLevel courseLevel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCourseType(CourseType courseType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

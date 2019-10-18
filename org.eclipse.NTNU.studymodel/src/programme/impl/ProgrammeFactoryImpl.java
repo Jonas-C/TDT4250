@@ -63,6 +63,7 @@ public class ProgrammeFactoryImpl extends EFactoryImpl implements ProgrammeFacto
 			case ProgrammePackage.COURSE: return createCourse();
 			case ProgrammePackage.STUDY_YEAR: return createStudyYear();
 			case ProgrammePackage.SEMESTER: return createSemester();
+			case ProgrammePackage.SEMESTER_COURSE: return createSemesterCourse();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -82,6 +83,8 @@ public class ProgrammeFactoryImpl extends EFactoryImpl implements ProgrammeFacto
 				return createProgrammeTypeFromString(eDataType, initialValue);
 			case ProgrammePackage.COURSE_LEVEL:
 				return createCourseLevelFromString(eDataType, initialValue);
+			case ProgrammePackage.COURSE_TYPE:
+				return createCourseTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -101,6 +104,8 @@ public class ProgrammeFactoryImpl extends EFactoryImpl implements ProgrammeFacto
 				return convertProgrammeTypeToString(eDataType, instanceValue);
 			case ProgrammePackage.COURSE_LEVEL:
 				return convertCourseLevelToString(eDataType, instanceValue);
+			case ProgrammePackage.COURSE_TYPE:
+				return convertCourseTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -177,6 +182,17 @@ public class ProgrammeFactoryImpl extends EFactoryImpl implements ProgrammeFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public SemesterCourse createSemesterCourse() {
+		SemesterCourseImpl semesterCourse = new SemesterCourseImpl();
+		return semesterCourse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SemesterType createSemesterTypeFromString(EDataType eDataType, String initialValue) {
 		SemesterType result = SemesterType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -229,6 +245,26 @@ public class ProgrammeFactoryImpl extends EFactoryImpl implements ProgrammeFacto
 	 * @generated
 	 */
 	public String convertCourseLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CourseType createCourseTypeFromString(EDataType eDataType, String initialValue) {
+		CourseType result = CourseType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCourseTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

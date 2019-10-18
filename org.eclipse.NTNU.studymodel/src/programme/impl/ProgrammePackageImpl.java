@@ -13,12 +13,14 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import programme.Course;
 import programme.CourseLevel;
+import programme.CourseType;
 import programme.Department;
 import programme.Programme;
 import programme.ProgrammeFactory;
 import programme.ProgrammePackage;
 import programme.ProgrammeType;
 import programme.Semester;
+import programme.SemesterCourse;
 import programme.SemesterType;
 import programme.Specialization;
 import programme.StudyYear;
@@ -79,6 +81,13 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass semesterCourseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum semesterTypeEEnum = null;
 
 	/**
@@ -94,6 +103,13 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	 * @generated
 	 */
 	private EEnum courseLevelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum courseTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -422,7 +438,7 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	 * @generated
 	 */
 	@Override
-	public EReference getSemester_Electives() {
+	public EReference getSemester_Courses() {
 		return (EReference)semesterEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -432,8 +448,8 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	 * @generated
 	 */
 	@Override
-	public EReference getSemester_MandatoryCourses() {
-		return (EReference)semesterEClass.getEStructuralFeatures().get(2);
+	public EClass getSemesterCourse() {
+		return semesterCourseEClass;
 	}
 
 	/**
@@ -442,8 +458,8 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	 * @generated
 	 */
 	@Override
-	public EReference getSemester_M2aCourses() {
-		return (EReference)semesterEClass.getEStructuralFeatures().get(3);
+	public EReference getSemesterCourse_SemesterCourse() {
+		return (EReference)semesterCourseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -452,8 +468,8 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	 * @generated
 	 */
 	@Override
-	public EReference getSemester_M1aCourses() {
-		return (EReference)semesterEClass.getEStructuralFeatures().get(4);
+	public EAttribute getSemesterCourse_CourseType() {
+		return (EAttribute)semesterCourseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -484,6 +500,16 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 	@Override
 	public EEnum getCourseLevel() {
 		return courseLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getCourseType() {
+		return courseTypeEEnum;
 	}
 
 	/**
@@ -545,15 +571,17 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 
 		semesterEClass = createEClass(SEMESTER);
 		createEAttribute(semesterEClass, SEMESTER__SEMESTER_TYPE);
-		createEReference(semesterEClass, SEMESTER__ELECTIVES);
-		createEReference(semesterEClass, SEMESTER__MANDATORY_COURSES);
-		createEReference(semesterEClass, SEMESTER__M2A_COURSES);
-		createEReference(semesterEClass, SEMESTER__M1A_COURSES);
+		createEReference(semesterEClass, SEMESTER__COURSES);
+
+		semesterCourseEClass = createEClass(SEMESTER_COURSE);
+		createEReference(semesterCourseEClass, SEMESTER_COURSE__SEMESTER_COURSE);
+		createEAttribute(semesterCourseEClass, SEMESTER_COURSE__COURSE_TYPE);
 
 		// Create enums
 		semesterTypeEEnum = createEEnum(SEMESTER_TYPE);
 		programmeTypeEEnum = createEEnum(PROGRAMME_TYPE);
 		courseLevelEEnum = createEEnum(COURSE_LEVEL);
+		courseTypeEEnum = createEEnum(COURSE_TYPE);
 	}
 
 	/**
@@ -616,10 +644,11 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 
 		initEClass(semesterEClass, Semester.class, "Semester", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSemester_SemesterType(), this.getSemesterType(), "semesterType", null, 1, 1, Semester.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemester_Electives(), this.getCourse(), null, "electives", null, 0, -1, Semester.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemester_MandatoryCourses(), this.getCourse(), null, "mandatoryCourses", null, 0, -1, Semester.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemester_M2aCourses(), this.getCourse(), null, "m2aCourses", null, 0, -1, Semester.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemester_M1aCourses(), this.getCourse(), null, "m1aCourses", null, 0, -1, Semester.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSemester_Courses(), this.getSemesterCourse(), null, "courses", null, 1, -1, Semester.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(semesterCourseEClass, SemesterCourse.class, "SemesterCourse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSemesterCourse_SemesterCourse(), this.getCourse(), null, "semesterCourse", null, 1, 1, SemesterCourse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSemesterCourse_CourseType(), this.getCourseType(), "courseType", null, 1, 1, SemesterCourse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(semesterTypeEEnum, SemesterType.class, "SemesterType");
@@ -636,6 +665,12 @@ public class ProgrammePackageImpl extends EPackageImpl implements ProgrammePacka
 		addEEnumLiteral(courseLevelEEnum, CourseLevel.HIGHER);
 		addEEnumLiteral(courseLevelEEnum, CourseLevel.PHD);
 		addEEnumLiteral(courseLevelEEnum, CourseLevel.THIRD_YEAR);
+
+		initEEnum(courseTypeEEnum, CourseType.class, "CourseType");
+		addEEnumLiteral(courseTypeEEnum, CourseType.OBLIGATORY);
+		addEEnumLiteral(courseTypeEEnum, CourseType.ELECTIVE);
+		addEEnumLiteral(courseTypeEEnum, CourseType.M2A);
+		addEEnumLiteral(courseTypeEEnum, CourseType.M1A);
 
 		// Create resource
 		createResource(eNS_URI);

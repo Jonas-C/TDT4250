@@ -16,10 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link programme.Semester#getSemesterType <em>Semester Type</em>}</li>
- *   <li>{@link programme.Semester#getElectives <em>Electives</em>}</li>
- *   <li>{@link programme.Semester#getMandatoryCourses <em>Mandatory Courses</em>}</li>
- *   <li>{@link programme.Semester#getM2aCourses <em>M2a Courses</em>}</li>
- *   <li>{@link programme.Semester#getM1aCourses <em>M1a Courses</em>}</li>
+ *   <li>{@link programme.Semester#getCourses <em>Courses</em>}</li>
  * </ul>
  *
  * @see programme.ProgrammePackage#getSemester()
@@ -53,51 +50,15 @@ public interface Semester extends EObject {
 	void setSemesterType(SemesterType value);
 
 	/**
-	 * Returns the value of the '<em><b>Electives</b></em>' reference list.
-	 * The list contents are of type {@link programme.Course}.
+	 * Returns the value of the '<em><b>Courses</b></em>' containment reference list.
+	 * The list contents are of type {@link programme.SemesterCourse}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Electives</em>' reference list.
-	 * @see programme.ProgrammePackage#getSemester_Electives()
-	 * @model
+	 * @return the value of the '<em>Courses</em>' containment reference list.
+	 * @see programme.ProgrammePackage#getSemester_Courses()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Course> getElectives();
-
-	/**
-	 * Returns the value of the '<em><b>Mandatory Courses</b></em>' reference list.
-	 * The list contents are of type {@link programme.Course}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mandatory Courses</em>' reference list.
-	 * @see programme.ProgrammePackage#getSemester_MandatoryCourses()
-	 * @model
-	 * @generated
-	 */
-	EList<Course> getMandatoryCourses();
-
-	/**
-	 * Returns the value of the '<em><b>M2a Courses</b></em>' reference list.
-	 * The list contents are of type {@link programme.Course}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>M2a Courses</em>' reference list.
-	 * @see programme.ProgrammePackage#getSemester_M2aCourses()
-	 * @model
-	 * @generated
-	 */
-	EList<Course> getM2aCourses();
-
-	/**
-	 * Returns the value of the '<em><b>M1a Courses</b></em>' reference list.
-	 * The list contents are of type {@link programme.Course}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>M1a Courses</em>' reference list.
-	 * @see programme.ProgrammePackage#getSemester_M1aCourses()
-	 * @model
-	 * @generated
-	 */
-	EList<Course> getM1aCourses();
+	EList<SemesterCourse> getCourses();
 
 } // Semester

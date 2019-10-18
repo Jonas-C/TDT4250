@@ -380,40 +380,13 @@ public interface ProgrammePackage extends EPackage {
 	int SEMESTER__SEMESTER_TYPE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Electives</b></em>' reference list.
+	 * The feature id for the '<em><b>Courses</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMESTER__ELECTIVES = 1;
-
-	/**
-	 * The feature id for the '<em><b>Mandatory Courses</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMESTER__MANDATORY_COURSES = 2;
-
-	/**
-	 * The feature id for the '<em><b>M2a Courses</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMESTER__M2A_COURSES = 3;
-
-	/**
-	 * The feature id for the '<em><b>M1a Courses</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMESTER__M1A_COURSES = 4;
+	int SEMESTER__COURSES = 1;
 
 	/**
 	 * The number of structural features of the '<em>Semester</em>' class.
@@ -422,7 +395,7 @@ public interface ProgrammePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMESTER_FEATURE_COUNT = 5;
+	int SEMESTER_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Semester</em>' class.
@@ -434,6 +407,52 @@ public interface ProgrammePackage extends EPackage {
 	int SEMESTER_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link programme.impl.SemesterCourseImpl <em>Semester Course</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see programme.impl.SemesterCourseImpl
+	 * @see programme.impl.ProgrammePackageImpl#getSemesterCourse()
+	 * @generated
+	 */
+	int SEMESTER_COURSE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Semester Course</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMESTER_COURSE__SEMESTER_COURSE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Course Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMESTER_COURSE__COURSE_TYPE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Semester Course</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMESTER_COURSE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Semester Course</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMESTER_COURSE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link programme.SemesterType <em>Semester Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -441,7 +460,7 @@ public interface ProgrammePackage extends EPackage {
 	 * @see programme.impl.ProgrammePackageImpl#getSemesterType()
 	 * @generated
 	 */
-	int SEMESTER_TYPE = 6;
+	int SEMESTER_TYPE = 7;
 
 	/**
 	 * The meta object id for the '{@link programme.ProgrammeType <em>Type</em>}' enum.
@@ -451,7 +470,7 @@ public interface ProgrammePackage extends EPackage {
 	 * @see programme.impl.ProgrammePackageImpl#getProgrammeType()
 	 * @generated
 	 */
-	int PROGRAMME_TYPE = 7;
+	int PROGRAMME_TYPE = 8;
 
 	/**
 	 * The meta object id for the '{@link programme.CourseLevel <em>Course Level</em>}' enum.
@@ -461,7 +480,18 @@ public interface ProgrammePackage extends EPackage {
 	 * @see programme.impl.ProgrammePackageImpl#getCourseLevel()
 	 * @generated
 	 */
-	int COURSE_LEVEL = 8;
+	int COURSE_LEVEL = 9;
+
+
+	/**
+	 * The meta object id for the '{@link programme.CourseType <em>Course Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see programme.CourseType
+	 * @see programme.impl.ProgrammePackageImpl#getCourseType()
+	 * @generated
+	 */
+	int COURSE_TYPE = 10;
 
 
 	/**
@@ -734,48 +764,47 @@ public interface ProgrammePackage extends EPackage {
 	EAttribute getSemester_SemesterType();
 
 	/**
-	 * Returns the meta object for the reference list '{@link programme.Semester#getElectives <em>Electives</em>}'.
+	 * Returns the meta object for the containment reference list '{@link programme.Semester#getCourses <em>Courses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Electives</em>'.
-	 * @see programme.Semester#getElectives()
+	 * @return the meta object for the containment reference list '<em>Courses</em>'.
+	 * @see programme.Semester#getCourses()
 	 * @see #getSemester()
 	 * @generated
 	 */
-	EReference getSemester_Electives();
+	EReference getSemester_Courses();
 
 	/**
-	 * Returns the meta object for the reference list '{@link programme.Semester#getMandatoryCourses <em>Mandatory Courses</em>}'.
+	 * Returns the meta object for class '{@link programme.SemesterCourse <em>Semester Course</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Mandatory Courses</em>'.
-	 * @see programme.Semester#getMandatoryCourses()
-	 * @see #getSemester()
+	 * @return the meta object for class '<em>Semester Course</em>'.
+	 * @see programme.SemesterCourse
 	 * @generated
 	 */
-	EReference getSemester_MandatoryCourses();
+	EClass getSemesterCourse();
 
 	/**
-	 * Returns the meta object for the reference list '{@link programme.Semester#getM2aCourses <em>M2a Courses</em>}'.
+	 * Returns the meta object for the reference '{@link programme.SemesterCourse#getSemesterCourse <em>Semester Course</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>M2a Courses</em>'.
-	 * @see programme.Semester#getM2aCourses()
-	 * @see #getSemester()
+	 * @return the meta object for the reference '<em>Semester Course</em>'.
+	 * @see programme.SemesterCourse#getSemesterCourse()
+	 * @see #getSemesterCourse()
 	 * @generated
 	 */
-	EReference getSemester_M2aCourses();
+	EReference getSemesterCourse_SemesterCourse();
 
 	/**
-	 * Returns the meta object for the reference list '{@link programme.Semester#getM1aCourses <em>M1a Courses</em>}'.
+	 * Returns the meta object for the attribute '{@link programme.SemesterCourse#getCourseType <em>Course Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>M1a Courses</em>'.
-	 * @see programme.Semester#getM1aCourses()
-	 * @see #getSemester()
+	 * @return the meta object for the attribute '<em>Course Type</em>'.
+	 * @see programme.SemesterCourse#getCourseType()
+	 * @see #getSemesterCourse()
 	 * @generated
 	 */
-	EReference getSemester_M1aCourses();
+	EAttribute getSemesterCourse_CourseType();
 
 	/**
 	 * Returns the meta object for enum '{@link programme.SemesterType <em>Semester Type</em>}'.
@@ -806,6 +835,16 @@ public interface ProgrammePackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCourseLevel();
+
+	/**
+	 * Returns the meta object for enum '{@link programme.CourseType <em>Course Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Course Type</em>'.
+	 * @see programme.CourseType
+	 * @generated
+	 */
+	EEnum getCourseType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1043,36 +1082,38 @@ public interface ProgrammePackage extends EPackage {
 		EAttribute SEMESTER__SEMESTER_TYPE = eINSTANCE.getSemester_SemesterType();
 
 		/**
-		 * The meta object literal for the '<em><b>Electives</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Courses</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SEMESTER__ELECTIVES = eINSTANCE.getSemester_Electives();
+		EReference SEMESTER__COURSES = eINSTANCE.getSemester_Courses();
 
 		/**
-		 * The meta object literal for the '<em><b>Mandatory Courses</b></em>' reference list feature.
+		 * The meta object literal for the '{@link programme.impl.SemesterCourseImpl <em>Semester Course</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see programme.impl.SemesterCourseImpl
+		 * @see programme.impl.ProgrammePackageImpl#getSemesterCourse()
 		 * @generated
 		 */
-		EReference SEMESTER__MANDATORY_COURSES = eINSTANCE.getSemester_MandatoryCourses();
+		EClass SEMESTER_COURSE = eINSTANCE.getSemesterCourse();
 
 		/**
-		 * The meta object literal for the '<em><b>M2a Courses</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Semester Course</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SEMESTER__M2A_COURSES = eINSTANCE.getSemester_M2aCourses();
+		EReference SEMESTER_COURSE__SEMESTER_COURSE = eINSTANCE.getSemesterCourse_SemesterCourse();
 
 		/**
-		 * The meta object literal for the '<em><b>M1a Courses</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Course Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SEMESTER__M1A_COURSES = eINSTANCE.getSemester_M1aCourses();
+		EAttribute SEMESTER_COURSE__COURSE_TYPE = eINSTANCE.getSemesterCourse_CourseType();
 
 		/**
 		 * The meta object literal for the '{@link programme.SemesterType <em>Semester Type</em>}' enum.
@@ -1103,6 +1144,16 @@ public interface ProgrammePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COURSE_LEVEL = eINSTANCE.getCourseLevel();
+
+		/**
+		 * The meta object literal for the '{@link programme.CourseType <em>Course Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see programme.CourseType
+		 * @see programme.impl.ProgrammePackageImpl#getCourseType()
+		 * @generated
+		 */
+		EEnum COURSE_TYPE = eINSTANCE.getCourseType();
 
 	}
 

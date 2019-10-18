@@ -6,18 +6,20 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import programme.Course;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import programme.ProgrammePackage;
 import programme.Semester;
+import programme.SemesterCourse;
 import programme.SemesterType;
 
 /**
@@ -29,10 +31,7 @@ import programme.SemesterType;
  * </p>
  * <ul>
  *   <li>{@link programme.impl.SemesterImpl#getSemesterType <em>Semester Type</em>}</li>
- *   <li>{@link programme.impl.SemesterImpl#getElectives <em>Electives</em>}</li>
- *   <li>{@link programme.impl.SemesterImpl#getMandatoryCourses <em>Mandatory Courses</em>}</li>
- *   <li>{@link programme.impl.SemesterImpl#getM2aCourses <em>M2a Courses</em>}</li>
- *   <li>{@link programme.impl.SemesterImpl#getM1aCourses <em>M1a Courses</em>}</li>
+ *   <li>{@link programme.impl.SemesterImpl#getCourses <em>Courses</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,44 +58,14 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	protected SemesterType semesterType = SEMESTER_TYPE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getElectives() <em>Electives</em>}' reference list.
+	 * The cached value of the '{@link #getCourses() <em>Courses</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getElectives()
+	 * @see #getCourses()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Course> electives;
-
-	/**
-	 * The cached value of the '{@link #getMandatoryCourses() <em>Mandatory Courses</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMandatoryCourses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Course> mandatoryCourses;
-
-	/**
-	 * The cached value of the '{@link #getM2aCourses() <em>M2a Courses</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getM2aCourses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Course> m2aCourses;
-
-	/**
-	 * The cached value of the '{@link #getM1aCourses() <em>M1a Courses</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getM1aCourses()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Course> m1aCourses;
+	protected EList<SemesterCourse> courses;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,11 +115,11 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	 * @generated
 	 */
 	@Override
-	public EList<Course> getElectives() {
-		if (electives == null) {
-			electives = new EObjectResolvingEList<Course>(Course.class, this, ProgrammePackage.SEMESTER__ELECTIVES);
+	public EList<SemesterCourse> getCourses() {
+		if (courses == null) {
+			courses = new EObjectContainmentEList<SemesterCourse>(SemesterCourse.class, this, ProgrammePackage.SEMESTER__COURSES);
 		}
-		return electives;
+		return courses;
 	}
 
 	/**
@@ -159,37 +128,12 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	 * @generated
 	 */
 	@Override
-	public EList<Course> getMandatoryCourses() {
-		if (mandatoryCourses == null) {
-			mandatoryCourses = new EObjectResolvingEList<Course>(Course.class, this, ProgrammePackage.SEMESTER__MANDATORY_COURSES);
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProgrammePackage.SEMESTER__COURSES:
+				return ((InternalEList<?>)getCourses()).basicRemove(otherEnd, msgs);
 		}
-		return mandatoryCourses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Course> getM2aCourses() {
-		if (m2aCourses == null) {
-			m2aCourses = new EObjectResolvingEList<Course>(Course.class, this, ProgrammePackage.SEMESTER__M2A_COURSES);
-		}
-		return m2aCourses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Course> getM1aCourses() {
-		if (m1aCourses == null) {
-			m1aCourses = new EObjectResolvingEList<Course>(Course.class, this, ProgrammePackage.SEMESTER__M1A_COURSES);
-		}
-		return m1aCourses;
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -202,14 +146,8 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 		switch (featureID) {
 			case ProgrammePackage.SEMESTER__SEMESTER_TYPE:
 				return getSemesterType();
-			case ProgrammePackage.SEMESTER__ELECTIVES:
-				return getElectives();
-			case ProgrammePackage.SEMESTER__MANDATORY_COURSES:
-				return getMandatoryCourses();
-			case ProgrammePackage.SEMESTER__M2A_COURSES:
-				return getM2aCourses();
-			case ProgrammePackage.SEMESTER__M1A_COURSES:
-				return getM1aCourses();
+			case ProgrammePackage.SEMESTER__COURSES:
+				return getCourses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -226,21 +164,9 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 			case ProgrammePackage.SEMESTER__SEMESTER_TYPE:
 				setSemesterType((SemesterType)newValue);
 				return;
-			case ProgrammePackage.SEMESTER__ELECTIVES:
-				getElectives().clear();
-				getElectives().addAll((Collection<? extends Course>)newValue);
-				return;
-			case ProgrammePackage.SEMESTER__MANDATORY_COURSES:
-				getMandatoryCourses().clear();
-				getMandatoryCourses().addAll((Collection<? extends Course>)newValue);
-				return;
-			case ProgrammePackage.SEMESTER__M2A_COURSES:
-				getM2aCourses().clear();
-				getM2aCourses().addAll((Collection<? extends Course>)newValue);
-				return;
-			case ProgrammePackage.SEMESTER__M1A_COURSES:
-				getM1aCourses().clear();
-				getM1aCourses().addAll((Collection<? extends Course>)newValue);
+			case ProgrammePackage.SEMESTER__COURSES:
+				getCourses().clear();
+				getCourses().addAll((Collection<? extends SemesterCourse>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -257,17 +183,8 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 			case ProgrammePackage.SEMESTER__SEMESTER_TYPE:
 				setSemesterType(SEMESTER_TYPE_EDEFAULT);
 				return;
-			case ProgrammePackage.SEMESTER__ELECTIVES:
-				getElectives().clear();
-				return;
-			case ProgrammePackage.SEMESTER__MANDATORY_COURSES:
-				getMandatoryCourses().clear();
-				return;
-			case ProgrammePackage.SEMESTER__M2A_COURSES:
-				getM2aCourses().clear();
-				return;
-			case ProgrammePackage.SEMESTER__M1A_COURSES:
-				getM1aCourses().clear();
+			case ProgrammePackage.SEMESTER__COURSES:
+				getCourses().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -283,14 +200,8 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 		switch (featureID) {
 			case ProgrammePackage.SEMESTER__SEMESTER_TYPE:
 				return semesterType != SEMESTER_TYPE_EDEFAULT;
-			case ProgrammePackage.SEMESTER__ELECTIVES:
-				return electives != null && !electives.isEmpty();
-			case ProgrammePackage.SEMESTER__MANDATORY_COURSES:
-				return mandatoryCourses != null && !mandatoryCourses.isEmpty();
-			case ProgrammePackage.SEMESTER__M2A_COURSES:
-				return m2aCourses != null && !m2aCourses.isEmpty();
-			case ProgrammePackage.SEMESTER__M1A_COURSES:
-				return m1aCourses != null && !m1aCourses.isEmpty();
+			case ProgrammePackage.SEMESTER__COURSES:
+				return courses != null && !courses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

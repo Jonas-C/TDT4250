@@ -21,6 +21,12 @@
       <genEnumLiterals ecoreEnumLiteral="ProgrammeNext.ecore#//CourseLevel/PHD"/>
       <genEnumLiterals ecoreEnumLiteral="ProgrammeNext.ecore#//CourseLevel/THIRD_YEAR"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProgrammeNext.ecore#//CourseType">
+      <genEnumLiterals ecoreEnumLiteral="ProgrammeNext.ecore#//CourseType/Obligatory"/>
+      <genEnumLiterals ecoreEnumLiteral="ProgrammeNext.ecore#//CourseType/Elective"/>
+      <genEnumLiterals ecoreEnumLiteral="ProgrammeNext.ecore#//CourseType/M2A"/>
+      <genEnumLiterals ecoreEnumLiteral="ProgrammeNext.ecore#//CourseType/M1A"/>
+    </genEnums>
     <genClasses ecoreClass="ProgrammeNext.ecore#//Department">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProgrammeNext.ecore#//Department/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//Department/programmes"/>
@@ -51,10 +57,11 @@
     </genClasses>
     <genClasses ecoreClass="ProgrammeNext.ecore#//Semester">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProgrammeNext.ecore#//Semester/semesterType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//Semester/electives"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//Semester/mandatoryCourses"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//Semester/m2aCourses"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//Semester/m1aCourses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//Semester/courses"/>
+    </genClasses>
+    <genClasses ecoreClass="ProgrammeNext.ecore#//SemesterCourse">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProgrammeNext.ecore#//SemesterCourse/semesterCourse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProgrammeNext.ecore#//SemesterCourse/courseType"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
