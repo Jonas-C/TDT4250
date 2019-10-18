@@ -1,7 +1,6 @@
-# TDT4250
-Stuff related to TDT4250 - Advanced Software Design
+# TDT4250 - Assignment 1
 
-# Structure
+## Structure
 
 The Ecore model itself can be found in model/ProgrammeNext.ecore.
 I have also included some sample data in Department.xmi. This data is supposed to represent the master programme Informatics and two of
